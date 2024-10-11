@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Participant tickets</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Tickets</h2>
+      <div class="alert alert-success" role="alert" th:text="${message}" th:if="${success}"></div>
+      <div class="alert alert-danger" role="alert" th:text="${message}" th:if="${success == false}"></div><table class="table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Theme</th>
+          <th>Language</th>
+          <th>Date</th>
+          <th>City</th>
+          <th>Country</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tr th:each="ticket: ${participantTickets}">
+          <td th:text="${ticket.getId()}"></td>
+          <td th:text="${ticket.getEventTheme()}"></td>
+          <td th:text="${ticket.getEventLanguage()}"></td>
+          <td th:text="${ticket.getEventDate().toLocaleString()}"></td>
+          <td th:text="${ticket.getEventCity()}"></td>
+          <td th:text="${ticket.getEventCountry()}"></td>
+          <td><a th:href="@{'/tickets/' + ${ticket.getId()} (participantId=${ticket.getParticipantUsername()})}" class="btn btn-danger">Return</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

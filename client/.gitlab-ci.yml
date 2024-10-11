@@ -1,0 +1,5 @@
+gradle-17:
+    stage: build
+    image: gradle:jdk17-alpine
+    script:
+        - gradle build

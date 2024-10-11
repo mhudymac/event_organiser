@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Events</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Events</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Theme</th>
+          <th>Language</th>
+          <th>Date</th>
+          <th>City</th>
+          <th>Country</th>
+          <th>Capacity</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tr th:each="event: ${events}">
+          <td th:text="${event.getTheme()}"></td>
+          <td th:text="${event.getLanguage()}"></td>
+          <td th:text="${event.getDate().toLocaleString()}"></td>
+          <td th:text="${event.getCity()}"></td>
+          <td th:text="${event.getCountry()}"></td>
+          <td th:text="${event.getCapacity()}"></td>
+          <td><a href="#" th:href="@{'/events/{id}/edit' (id=${event.getId()})}" class="btn btn-warning">Edit</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

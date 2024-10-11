@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Create Event</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Create an event</h2>
+      <div class="alert alert-success" th:if="${success}">
+        <span th:text="${successMessage}"></span>
+      </div>
+      <div class="alert alert-danger" th:if="${success == false}">
+        <span th:text="${errorMessage}"></span>
+      </div>
+      <form action="#" th:action="@{/events/add}" th:object="${eventModel}" method="post">
+        <div class="form-floating">
+          <label for="theme">Theme</label>
+          <input type="text" id="theme" name="theme" th:field="*{theme}" required class="form-control"/><br/>
+        </div>
+        <div class="form-floating">
+          <label>Language</label>
+          <input type="text" name="language" th:field="*{language}" required class="form-control"/><br/>
+        </div>
+        <div class="form-floating">
+          <label>Date</label>
+          <input th:type="date" id="datePicker" name="date" th:field="*{date}" required class="form-control"/><br/>
+        </div>
+        <div class="form-floating">
+          <label>City</label>
+          <input type="text" name="city" th:field="*{city}" required class="form-control"/><br/>
+        </div>
+        <div class="form-floating">
+          <label>Country</label>
+          <input type="text" name="country" th:field="*{country}" required class="form-control"/><br/>
+        </div>
+        <div class="form-floating">
+          <label>Capacity</label>
+          <input type="number" name="capacity" th:field="*{capacity}" required class="form-control"/><br/>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Create Event"/>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+<script>
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+
+  today = yyyy + '-' + mm + '-' + dd;
+  document.getElementById("datePicker").setAttribute("min",today);
+</script>

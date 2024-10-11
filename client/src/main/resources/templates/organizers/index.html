@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Organizers</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Organizers</h2>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Username</th>
+              <th>Real Name</th>
+              <th>City</th>
+              <th>Country</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tr th:each="organizer: ${organizers}">
+              <td th:text="${organizer.getUsername()}"></td>
+              <td th:text="${organizer.getRealName()}"></td>
+              <td th:text="${organizer.getCity()}"></td>
+              <td th:text="${organizer.getCountry()}"></td>
+              <td><a href="#" th:href="@{'/organizers/{username}/edit' (username=${organizer.getUsername()})}" class="btn btn-warning">Edit</a></td>
+              <td><a href="#" th:href="@{'/events/organizer/{username}' (username=${organizer.getUsername()})}" class="btn btn-success">Sign in to an event</a></td>
+              <td><a href="#" th:href="@{'/organizers/{username}/events' (username=${organizer.getUsername()})}" class="btn btn-info" >Show your events</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+</div>
+
+</body>
+</html>

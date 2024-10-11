@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Add organizer</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Add organizer</h2>
+          <div class="alert alert-success" th:if="${success}">
+            <span th:text="${successMessage}"></span>
+          </div>
+          <div class="alert alert-danger" th:if="${success == false}">
+            <span th:text="${errorMessage}"></span>
+          </div>
+          <form action="#" th:action="@{/organizers/add}" th:object="${organizerModel}" method="post">
+            <div class="form-floating">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" th:field="*{username}" required class="form-control"/><br/>
+            </div>
+            <div class="form-floating">
+              <label>Real Name</label>
+              <input type="text" name="realName" th:field="*{realName}" required class="form-control"/><br/>
+            </div>
+            <div class="form-floating">
+              <label>City</label>
+              <input type="text" name="city" th:field="*{city}" required class="form-control"/><br/>
+            </div>
+            <div class="form-floating">
+              <label>Country</label>
+              <input type="text" name="country" th:field="*{country}" required class="form-control"/><br/>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Add Organizer"/>
+          </form>
+        </div>
+      </div>
+</div>
+
+</body>
+</html>

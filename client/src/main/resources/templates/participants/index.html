@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Participants</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Participants</h2>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Username</th>
+              <th>Real Name</th>
+              <th>City</th>
+              <th>Country</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tr th:each="participant: ${participants}">
+              <td th:text="${participant.getUsername()}"></td>
+              <td th:text="${participant.getRealName()}"></td>
+              <td th:text="${participant.getCity()}"></td>
+              <td th:text="${participant.getCountry()}"></td>
+              <td><a href="#" th:href="@{'/participants/{username}/edit' (username=${participant.getUsername()})}" class="btn btn-warning">Edit</a></td>
+              <td><a href="#" th:href="@{'/events/participant/{username}' (username=${participant.getUsername()})}" class="btn btn-success">Buy Tickets</a></td>
+              <td><a href="#" th:href="@{'/participants/{username}/tickets'(username=${participant.getUsername()})}" class="btn btn-info">Show Tickets</a></td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+#openapi: 3.0.3
+#info:
+#  title: Event Organizer
+#  description: Event Organizer API
+#  version: 1.0.0
+#servers:
+#  - url: 'http://localhost:8080'
+#paths:
+#  /users:
+#    get:
+#      description: read all users
+#      responses:
+#        200:
+#          content:
+#            application/json:
+#              $ref: '#/components/schemas/UserInfo'
+#components:
+#  schemas:
+#    UserInfo:
+#      type: object
+#      properties:
+#        username:
+#          type: string
